@@ -1,0 +1,55 @@
+Assignment 3
+1. Import necessary libraries (matplotlib and seaborn). Load the csv file of dataset into
+dataframe in Python program. [1 pt]
+
+​
+import matplotlib 
+import seaborn
+import pandas as pd
+df=pd.read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/us-weather-history/KCLT.csv")
+df
+date	actual_mean_temp	actual_min_temp	actual_max_temp	average_min_temp	average_max_temp	record_min_temp	record_max_temp	record_min_temp_year	record_max_temp_year	actual_precipitation	average_precipitation	record_precipitation
+0	2014-7-1	81	70	91	67	89	56	104	1919	2012	0.00	0.10	5.91
+1	2014-7-2	85	74	95	68	89	56	101	2008	1931	0.00	0.10	1.53
+2	2014-7-3	82	71	93	68	89	56	99	2010	1931	0.14	0.11	2.50
+3	2014-7-4	75	64	86	68	89	55	99	1933	1955	0.00	0.10	2.63
+4	2014-7-5	72	60	84	68	89	57	100	1967	1954	0.00	0.10	1.65
+...	...	...	...	...	...	...	...	...	...	...	...	...	...
+360	2015-6-26	85	70	100	67	88	55	102	1979	1952	1.21	0.11	1.98
+361	2015-6-27	82	71	92	67	88	56	103	2012	1954	0.55	0.11	1.86
+362	2015-6-28	76	66	85	67	88	53	101	1968	1959	0.00	0.11	1.83
+363	2015-6-29	73	59	87	67	88	54	104	1974	2012	0.00	0.11	2.39
+364	2015-6-30	83	71	94	67	89	54	104	1962	2012	0.00	0.11	2.75
+365 rows × 13 columns
+
+​
+2. Plot min and max for actual_mean_temp, actual_min_temp and actual_max_temp using bargraph. Use blue for min and red for max. [1 pt]
+​
+m_meanTemp=min(df['actual_mean_temp'])
+M_meanTemp=max(df['actual_mean_temp'])
+m_minTemp=min(df['actual_min_temp'])
+M_minTemp=max(df['actual_min_temp'])
+m_maxTemp=min(df['actual_max_temp'])
+M_maxTemp=max(df['actual_max_temp'])
+minimum=[m_meanTemp,m_minTemp,m_maxTemp] 
+maximum=[M_meanTemp,M_minTemp,M_maxTemp]
+minimum
+[18, 7, 26]
+maximum
+[88, 75, 100]
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+objects = ('actual_mean_temp','actual_min_temp','actual_max_temp' )
+y_pos = np.arange(len(objects))
+minimum=[m_meanTemp,m_minTemp,m_maxTemp] 
+maximum=[M_meanTemp,M_minTemp,M_maxTemp]
+plt.bar(y_pos,minimum, align='center',color='r')
+plt.bar(y_pos,maximum, alpha=0.5)
+​
+plt.xticks(y_pos, objects)
+plt.ylabel('temperature')
+plt.title('Minimum and Maximum temp')
+ 
+​
+plt.show()
